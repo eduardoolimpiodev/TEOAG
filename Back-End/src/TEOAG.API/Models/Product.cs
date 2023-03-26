@@ -1,3 +1,4 @@
+using System;
 namespace TEOAG.API.Models
 {
     public class Product
@@ -6,8 +7,8 @@ namespace TEOAG.API.Models
         public string ProductName { get; set; }
         public string ProductDescription { get; set; }
         public Status Status { get; set; }
-        public string ManufacturingDate { get; set; }
-        public string ExpirationDate { get; set; }
+        public DateTime ManufacturingDate { get; set; }
+        public DateTime ExpirationDate { get; set; }
         public int SupplierId { get; set; }
         public string SupplierDescription { get; set; }
         public string CNPJSupplier { get; set; }
