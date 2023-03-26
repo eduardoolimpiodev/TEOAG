@@ -1,5 +1,5 @@
-# TEOAG
-Teste Eduardo Olimpio AG
+# TEOAG - Test Eduardo Olimpio Auto Glass
+
 
 -Add : global.json
 (Command Line Interface - CLI 
@@ -10,5 +10,8 @@ dotnet dev-certs https --clear
 
 Criar certificado digital:
 dotnet dev-certs https --trust
+
+Contrato Swagger:
+https://localhost:[port]/swagger/v1/swagger.json
 
 
