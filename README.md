@@ -17,3 +17,7 @@ https://localhost:[port]/swagger/v1/swagger.json
 Criação das migrations dentro da pasta Data:
 dotnet ef migrations add Initial -o Data/Migrations
 
+Criação do banco de dados:
+dotnet ef database update
+
+
