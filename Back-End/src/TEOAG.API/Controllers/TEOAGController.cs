@@ -12,27 +12,29 @@ namespace TEOAG.API.Controllers
     [Route("api/[controller]")]
     public class TEOAGController : ControllerBase
     {
+        public IEnumerable<Product> Products = new List<Product>()
+            {
+                new Product(1),
+                new Product(2),
+                new Product(3)
+            };
+
         [HttpGet]
         public IEnumerable<Product> get()
         {
-            return new List<Product>()
-            {
-                new Product(),
-                new Product(),
-                new Product()
-            };
+            return Products;
         }
 
          [HttpGet("{id}")]
-        public string get(int id)
+        public Product get(int id)
         {
-            return $"Method Get Test id: {id}";
+            return Products.FirstOrDefault( pr => pr.Id == id);
         }
 
         [HttpPost]
-        public Product post(Product product)
+        public IEnumerable<Product> post(Product product)
         {
-            return product;
+            return Products.Append<Product>(product);
         }
 
          [HttpPut]
