@@ -2,5 +2,7 @@
 Teste Eduardo Olimpio AG
 
 -Add : global.json
-(dotnet new globaljson)
+(Command Line Interface - CLI 
+-dotnet new globaljson)
+
 
