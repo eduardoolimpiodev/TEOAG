@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using TEOAG.API.Models;
 
 namespace TEOAG.API.Controllers
 {
@@ -12,9 +13,14 @@ namespace TEOAG.API.Controllers
     public class TEOAGController : ControllerBase
     {
         [HttpGet]
-        public string get()
+        public IEnumerable<Product> get()
         {
-            return "Method Get Test";
+            return new List<Product>()
+            {
+                new Product(),
+                new Product(),
+                new Product()
+            };
         }
 
          [HttpGet("{id}")]
@@ -24,15 +30,16 @@ namespace TEOAG.API.Controllers
         }
 
         [HttpPost]
-        public string post()
+        public Product post(Product product)
         {
-            return "Method Post Test";
+            return product;
         }
 
          [HttpPut]
-        public string put(int id)
+        public Product put(int id, Product product)
         {
-            return $"Method Put Test id: {id}";
+            product.Id = product.Id+1;
+            return product;
         }
 
          [HttpDelete]
