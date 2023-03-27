@@ -29,6 +29,7 @@ namespace TEOAG.API.Controllers
         public Product get(int id)
         {
             return _context.Products.FirstOrDefault(pr => pr.Id == id);
+            
         }
 
         [HttpPost]
