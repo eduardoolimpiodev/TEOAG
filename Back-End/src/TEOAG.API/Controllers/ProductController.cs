@@ -45,51 +45,57 @@ namespace TEOAG.API.Controllers
         {
             try
             {
-                var products = await _productService.GetAllProductsAsync();
-                if (products == null) return NoContent();
+                var product = await _productService.GetAllProductByIdAsync(id);
+                if (product == null) return NoContent();
 
-                return Ok(products);
+                return Ok(product);
             }
             catch (Exception ex)
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError,
-                $"Erro ao tentar recuperar produtos. Erro: {ex.Message}");
+                $"Erro ao tentar recuperar produto ${id}. Erro: {ex.Message}");
             }
 
         }
 
         [HttpPost]
-        public IEnumerable<Product> post(Product product)
+        public async Task <IActionResult> post(Product model)
         {
-            _context.Products.Add(product);
-            if (_context.SaveChanges() > 0)
-                return _context.Products;
-            else
-                throw new Exception("Você não conseguiu adicionar um produto.");
+            try
+            {
+                var product = await _productService.PostProduct(model);
+                if (product == null) return NotFound("");
+
+                return Ok(product);
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError,
+                $"Erro ao tentar adicionar produto. Erro: {ex.Message}");
+            }
         }
 
         [HttpPut("{id}")]
-        public Product put(int id, Product product)
+        public async Task<IActionResult> put(int id, Product model)
         {
-            if (product.Id != id) throw new Exception("Você está tentando atualizar o produto errado.");
+            try
+            {
+                var product = await _productService.UpdateProduct(model);
+                if (product == null) return NoContent();
 
-            _context.Update(product);
-            if (_context.SaveChanges() > 0)
-                return _context.Products.FirstOrDefault(pr => pr.Id == id);
-            else
-                return new Product();
+                return Ok(product);
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError,
+                $"Erro ao tentar recuperar produto ${id}. Erro: {ex.Message}");
+            }
         }
 
         [HttpDelete("{id}")]
         public bool Delete(int id)
         {
-            var product = _context.Products.FirstOrDefault(pr => pr.Id == id);
-            if (product == null)
-                throw new Exception("Você está tentando deletar um produto inexistente.");
-
-            _context.Remove(product);
-
-            return _context.SaveChanges() > 0;
+            
         }
     }
 }
