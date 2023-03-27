@@ -2,10 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using TEOAG.Data.Context;
 using TEOAG.Domain.Entities;
+using TEOAG.Domain.Services;
 
 namespace TEOAG.API.Controllers
 {
@@ -13,30 +15,54 @@ namespace TEOAG.API.Controllers
     [Route("api/[controller]")]
     public class ProductController : ControllerBase
     {
-        
-        public ProductController()
+        private readonly ProductService _productService;
+
+        public ProductController(ProductService productService)
         {
-           
+            _productService = productService;
         }
 
         [HttpGet]
-        public IEnumerable<Product> get()
+        public async Task<IActionResult> get()
         {
-            return _context.Products;
+            try
+            {
+                var products = await _productService.GetAllProductsAsync();
+                if (products == null) return NoContent();
+
+                return Ok(products);
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError,
+                $"Erro ao tentar recuperar produtos. Erro: {ex.Message}");
+            }
+
         }
 
         [HttpGet("{id}")]
-        public Product get(int id)
+        public async Task<IActionResult> get(int id)
         {
-            return _context.Products.FirstOrDefault(pr => pr.Id == id);
-            
+            try
+            {
+                var products = await _productService.GetAllProductsAsync();
+                if (products == null) return NoContent();
+
+                return Ok(products);
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError,
+                $"Erro ao tentar recuperar produtos. Erro: {ex.Message}");
+            }
+
         }
 
         [HttpPost]
         public IEnumerable<Product> post(Product product)
         {
             _context.Products.Add(product);
-            if(_context.SaveChanges() > 0 )
+            if (_context.SaveChanges() > 0)
                 return _context.Products;
             else
                 throw new Exception("Você não conseguiu adicionar um produto.");
@@ -45,11 +71,11 @@ namespace TEOAG.API.Controllers
         [HttpPut("{id}")]
         public Product put(int id, Product product)
         {
-           if (product.Id != id) throw new Exception("Você está tentando atualizar o produto errado.");
+            if (product.Id != id) throw new Exception("Você está tentando atualizar o produto errado.");
 
             _context.Update(product);
-            if(_context.SaveChanges() > 0 )
-            return _context.Products.FirstOrDefault(pr => pr.Id == id);
+            if (_context.SaveChanges() > 0)
+                return _context.Products.FirstOrDefault(pr => pr.Id == id);
             else
                 return new Product();
         }
@@ -59,7 +85,7 @@ namespace TEOAG.API.Controllers
         {
             var product = _context.Products.FirstOrDefault(pr => pr.Id == id);
             if (product == null)
-            throw new Exception("Você está tentando deletar um produto inexistente.");
+                throw new Exception("Você está tentando deletar um produto inexistente.");
 
             _context.Remove(product);
 
