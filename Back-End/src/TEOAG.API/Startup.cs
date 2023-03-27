@@ -14,6 +14,9 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using TEOAG.Data.Context;
 using System.Text.Json.Serialization;
+using TEOAG.Domain.Interfaces.Repositories;
+using TEOAG.Data.Repositories;
+using TEOAG.Domain.Services;
 
 namespace TEOAG.API
 {
@@ -32,6 +35,14 @@ namespace TEOAG.API
             services.AddDbContext<DataContext>(
                 options => options.UseSqlite(Configuration.GetConnectionString("Default"))
             );
+    
+            services.AddScoped<IProductRepo, ProductRepo>();
+
+            services.AddScoped<IGeneralRepo, GeneralRepo>();
+
+            services.AddScoped<IProductService, ProductService>();
+
+
             services.AddControllers()
                 .AddJsonOptions(options => 
                 {

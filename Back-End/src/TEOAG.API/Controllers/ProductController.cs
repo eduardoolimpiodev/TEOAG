@@ -13,10 +13,10 @@ namespace TEOAG.API.Controllers
     [Route("api/[controller]")]
     public class ProductController : ControllerBase
     {
-        private readonly DataContext _context;
-        public ProductController(DataContext context)
+        
+        public ProductController()
         {
-            _context = context;
+           
         }
 
         [HttpGet]

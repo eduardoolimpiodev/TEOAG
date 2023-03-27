@@ -32,7 +32,7 @@ namespace TEOAG.Data.Repositories
             IQueryable<Product> query = _context.Products;
 
             query = query.AsNoTracking()
-                .OrderBy(pr => pr.Id)
+                .OrderBy(pr => pr.Id);
                
 
             return await query.FirstOrDefaultAsync(pr => pr.ProductName == productName);
