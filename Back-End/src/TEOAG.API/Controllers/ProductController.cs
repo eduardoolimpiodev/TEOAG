@@ -80,6 +80,10 @@ namespace TEOAG.API.Controllers
         {
             try
             {
+                if(model.Id != id)
+                this.StatusCode(StatusCodes.Status409Conflict,
+                "Você está tentando atualizar o produto errado.");
+
                 var product = await _productService.UpdateProduct(model);
                 if (product == null) return NoContent();
 
@@ -93,9 +97,27 @@ namespace TEOAG.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public bool Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            
+            try
+            {
+                var product = await _productService.GetAllProductByIdAsync(id);
+                if (product == null) 
+                this.StatusCode(StatusCodes.Status409Conflict,
+                "Você está tentando deletar o produto que não existe.");
+
+                if (await _productService.DeleteProduct(id))
+                {
+                    return Ok(new { message = "Deletado com sucesso."});
+                }
+                
+                return Ok(product);
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError,
+                $"Erro ao tentar recuperar produto ${id}. Erro: {ex.Message}");
+            }
         }
     }
 }
