@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TEOAG.Data\TEOAG.Data.csproj" />
+    <ProjectReference Include="..\TEOAG.Domain\TEOAG.Domain.csproj" />
   </ItemGroup>
 
 </Project>
