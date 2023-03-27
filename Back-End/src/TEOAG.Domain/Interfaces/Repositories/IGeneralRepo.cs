@@ -8,6 +8,7 @@ namespace TEOAG.Domain.Interfaces.Repositories
 
          void Put<T>(T entity) where T : class;
 
+         void Delete<T>(T entity) where T : class;
          void DeleteAll<T>(T[] entity) where T : class;
 
          Task<bool> SaveChangeAsync();

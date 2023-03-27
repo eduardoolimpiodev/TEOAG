@@ -45,7 +45,7 @@ namespace TEOAG.Domain.Entities
 
         public void Finish()
         {
-            if(ManufacturingDate <= ExpirationDate)
+            if(ManufacturingDate < ExpirationDate)
             ManufacturingDate = ManufacturingDate;
             else 
                 throw new Exception($"Produto já cadastrado em: {ManufacturingDate.ToString("dd/MM/yyyy hh:mm")}");

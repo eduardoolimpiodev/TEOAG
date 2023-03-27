@@ -60,19 +60,46 @@ namespace TEOAG.Domain.Services
         }
 
 
-        public Task<bool> DeleteProduct(int productId)
+        public async Task<bool> DeleteProduct(int productId)
         {
-            throw new NotImplementedException();
+            var product = await _productRepo.GetByIdAsync(productId);
+            if(product == null) throw new Exception("Produto que tentou deletar não existe");
+
+            _productRepo.Delete(product);
+            return await _productRepo.SaveChangeAsync();
+
         }
 
-        public Task<Product> GetAllProductByIdAsync(int productId)
+        public async Task<Product> GetAllProductByIdAsync(int productId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                 var product = await _productRepo.GetByIdAsync(productId);
+                 if(product == null) return null;
+
+                 return product;
+            }
+            catch (Exception ex)
+            {
+                
+                throw new Exception(ex.Message);
+            }
         }
 
-        public Task<Product[]> GetAllProductsAsync()
+        public async Task<Product[]> GetAllProductsAsync()
         {
-            throw new NotImplementedException();
+            try
+            {
+                 var products = await _productRepo.GetAllAsync();
+                 if(products == null) return null;
+
+                 return products;
+            }
+            catch (Exception ex)
+            {
+                
+                throw new Exception(ex.Message);
+            }
         }
 
     }
