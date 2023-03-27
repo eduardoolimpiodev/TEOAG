@@ -25,4 +25,7 @@ dotnet ef database update
 Criação de Migrations DDD:
 dotnet ef migrations add Initial -p TEOAG.Data -s TEOAG.API
 
+Update-Database DDD:
+dotnet ef database update -s TEOAG.API
+
 
