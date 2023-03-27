@@ -15,6 +15,7 @@ namespace TEOAG.API.Models
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public string ProductDescription { get; set; }
 
+        [JsonPropertyName("Product Status")]
         public Status Status { get; set; }
 
         [JsonPropertyName("Manufacturing Date")]
