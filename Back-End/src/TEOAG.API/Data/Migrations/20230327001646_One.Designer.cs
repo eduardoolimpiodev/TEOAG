@@ -9,8 +9,8 @@ using TEOAG.API.Data;
 namespace TEOAG.API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230327001255_Eigth")]
-    partial class Eigth
+    [Migration("20230327001646_One")]
+    partial class One
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

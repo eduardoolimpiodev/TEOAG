@@ -38,7 +38,7 @@ namespace TEOAG.API.Controllers
             if(_context.SaveChanges() > 0 )
                 return _context.Products;
             else
-                throw new Exception("Você não conseguiu adicionar uma atividade.");
+                throw new Exception("Você não conseguiu adicionar um produto.");
         }
 
         [HttpPut("{id}")]
