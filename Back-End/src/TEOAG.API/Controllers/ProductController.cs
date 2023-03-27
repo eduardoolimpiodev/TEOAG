@@ -92,7 +92,7 @@ namespace TEOAG.API.Controllers
             catch (Exception ex)
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError,
-                $"Erro ao tentar recuperar produto ${id}. Erro: {ex.Message}");
+                $"Erro ao tentar atualizar produto ${id}. Erro: {ex.Message}");
             }
         }
 
