@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace TEOAG.API.Data.Migrations
+namespace TEOAG.Data.Migrations
 {
-    public partial class One : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,8 +13,8 @@ namespace TEOAG.API.Data.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    ProductName = table.Column<string>(type: "TEXT", nullable: true),
-                    ProductDescription = table.Column<string>(type: "TEXT", nullable: true),
+                    ProductName = table.Column<string>(type: "varchar(50)", nullable: true),
+                    ProductDescription = table.Column<string>(type: "varchar(255)", nullable: false),
                     Status = table.Column<int>(type: "INTEGER", nullable: false),
                     ManufacturingDate = table.Column<DateTime>(type: "TEXT", nullable: false),
                     ExpirationDate = table.Column<DateTime>(type: "TEXT", nullable: false),

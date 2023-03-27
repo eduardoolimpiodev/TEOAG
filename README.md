@@ -20,4 +20,9 @@ dotnet ef migrations add Initial -o Data/Migrations
 Criação do banco de dados:
 dotnet ef database update
 
+#DDD:
+
+Criação de Migrations DDD:
+dotnet ef migrations add Initial -p TEOAG.Data -s TEOAG.API
+
 

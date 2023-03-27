@@ -3,9 +3,9 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TEOAG.API.Data;
+using TEOAG.Data.Context;
 
-namespace TEOAG.API.Data.Migrations
+namespace TEOAG.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
     partial class DataContextModelSnapshot : ModelSnapshot
@@ -16,7 +16,7 @@ namespace TEOAG.API.Data.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.10");
 
-            modelBuilder.Entity("TEOAG.API.Models.Product", b =>
+            modelBuilder.Entity("TEOAG.Domain.Entities.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -32,10 +32,11 @@ namespace TEOAG.API.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ProductDescription")
-                        .HasColumnType("TEXT");
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("ProductName")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("varchar(50)");
 
                     b.Property<int>("Status")
                         .HasColumnType("INTEGER");

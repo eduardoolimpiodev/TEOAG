@@ -10,3 +10,9 @@ C:\Users\eduar\Desktop\TEOAG\TEOAG\Back-End\src\TEOAG.Data\obj\Debug\net5.0\TEOA
 C:\Users\eduar\Desktop\TEOAG\TEOAG\Back-End\src\TEOAG.Data\obj\Debug\net5.0\TEOAG.Data.dll
 C:\Users\eduar\Desktop\TEOAG\TEOAG\Back-End\src\TEOAG.Data\obj\Debug\net5.0\ref\TEOAG.Data.dll
 C:\Users\eduar\Desktop\TEOAG\TEOAG\Back-End\src\TEOAG.Data\obj\Debug\net5.0\TEOAG.Data.pdb
+C:\Users\eduar\Desktop\TEOAG\TEOAG\Back-End\src\TEOAG.Data\bin\Debug\net5.0\TEOAG.Data.runtimeconfig.json
+C:\Users\eduar\Desktop\TEOAG\TEOAG\Back-End\src\TEOAG.Data\bin\Debug\net5.0\TEOAG.Data.runtimeconfig.dev.json
+C:\Users\eduar\Desktop\TEOAG\TEOAG\Back-End\src\TEOAG.Data\bin\Debug\net5.0\TEOAG.Domain.dll
+C:\Users\eduar\Desktop\TEOAG\TEOAG\Back-End\src\TEOAG.Data\bin\Debug\net5.0\TEOAG.Domain.pdb
+C:\Users\eduar\Desktop\TEOAG\TEOAG\Back-End\src\TEOAG.Data\obj\Debug\net5.0\TEOAG.Data.csproj.CopyComplete
+C:\Users\eduar\Desktop\TEOAG\TEOAG\Back-End\src\TEOAG.Data\obj\Debug\net5.0\TEOAG.Data.genruntimeconfig.cache
