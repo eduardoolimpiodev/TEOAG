@@ -110,13 +110,16 @@ namespace TEOAG.API.Controllers
                 {
                     return Ok(new { message = "Deletado com sucesso."});
                 }
-                
-                return Ok(product);
+                else
+                {
+                     return BadRequest("Ocorreu um problema não específico ao tentar deletar o produto.");
+                }
+
             }
             catch (Exception ex)
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError,
-                $"Erro ao tentar recuperar produto ${id}. Erro: {ex.Message}");
+                $"Erro ao tentar deletar produto ${id}. Erro: {ex.Message}");
             }
         }
     }
